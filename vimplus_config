@@ -1,5 +1,6 @@
 vi ~/.vimrc
 set mouse=a
+set mouse=v
 
 /* solve bug */
 cd ~/.vim
