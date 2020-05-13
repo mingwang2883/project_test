@@ -1,6 +1,7 @@
+sudo apt-get install vim-gtk
+
 vi ~/.vimrc
 set mouse=a
-set mouse=v
 
 /* solve bug */
 cd ~/.vim
