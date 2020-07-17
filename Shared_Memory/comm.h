@@ -1,16 +1,18 @@
 #ifndef _COMM_H__
 #define _COMM_H__
 
-#include<stdio.h>
-#include<sys/types.h>
-#include<sys/ipc.h>
-#include<sys/shm.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
-#define PATHNAME "./shm"
+#define PATHNAME "./sd_check"
 #define PROJ_ID 0x6666
 
-int CreateShm(int size);
+int CreateShm(char *path,int size);
 int DestroyShm(int shmid);
-int GetShm(int size);
+int GetShm(char *path,int size);
 
 #endif 

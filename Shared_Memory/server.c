@@ -5,17 +5,19 @@
 
 int main()
 {
-    mkdir(PATHNAME,S_IRWXU);
+    int shmid = CreateShm(PATHNAME,256);
 
-    int shmid = CreateShm(256);
-
-    char *addr = shmat(shmid,NULL,0);
+    unsigned char *addr = shmat(shmid,NULL,0);
     sleep(2);
 
     int i = 0;
-    while(i++ < 26)
+    while(1)
     {
-        printf("client# %s\n",addr);
+        printf("client# %d\n",*addr);
+        if(*addr != 0)
+        {
+            *addr = 0;
+        }
         sleep(1);
     }
 

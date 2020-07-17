@@ -1,8 +1,8 @@
 #include "comm.h"
 
-static int CommShm(int size,int flags)
+static int CommShm(char *path,int size,int flags)
 {
-    key_t key = ftok(PATHNAME,PROJ_ID);
+    key_t key = ftok(path,PROJ_ID);
     if(key < 0)
     {
         perror("ftok");
@@ -32,13 +32,14 @@ int DestroyShm(int shmid)
 
 }
 
-int CreateShm(int size)
+int CreateShm(char *path,int size)
 {
-    return CommShm(size,IPC_CREAT | IPC_EXCL | 0666);
-
+    remove(path);
+    mkdir(path,S_IRWXU);
+    return CommShm(path,size,IPC_CREAT | IPC_EXCL | 0666);
 }
 
-int GetShm(int size)
+int GetShm(char *path,int size)
 {
-    return CommShm(size,IPC_CREAT);
+    return CommShm(path,size,IPC_CREAT);
 }
