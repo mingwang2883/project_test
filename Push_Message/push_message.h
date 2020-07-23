@@ -19,22 +19,12 @@
 #include <arpa/inet.h>
 #include <sys/socket.h>
 
-typedef struct push_message_info
-{
-    int function_index_;
-    int event_type_;
-    unsigned long event_happend_time_;
-    int feed_weight_;
-    char pic_name_[56];
-    char alarm_alise_[56];
-}struct_push_message_info;
-
-typedef struct push_server_info
+typedef struct
 {
     char   ip_addrs[24];         //ipaddr
     unsigned int   ip_port;      //port
     char   server_push_path[20]; //server push addr
-}struct_pushserver;
+}StructPushServer;
 
 int SendRegister();
 

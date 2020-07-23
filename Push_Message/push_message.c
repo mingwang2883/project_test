@@ -113,7 +113,7 @@ int SendRegister()
 
     memset(push_server_path, 0, sizeof(push_server_path));
 
-    struct_pushserver info;
+    StructPushServer info;
     char server_addr[128]={0};
 
     info.ip_port = 8088;
