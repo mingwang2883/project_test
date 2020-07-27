@@ -329,7 +329,7 @@ int Mp4VNaluEncode(UBYTE* _naluData,int _naluSize,unsigned long long pts_duratio
             {
                 printf("add video track failed.\n");
                 return -1;
-            } 
+            }
             MP4SetVideoProfileLevel(mp4v2_write->m_mp4FHandle,0x7f);
         }
         mp4v2_write->state = sps_state;
@@ -357,7 +357,7 @@ int Mp4VNaluEncode(UBYTE* _naluData,int _naluSize,unsigned long long pts_duratio
                 }
                 mp4v2_write->m_u64VideoPTS = pts_duration;
                 mp4v2_write->m_bFirstVideo = false;
-                printf("m_bFirstAudio:%d PTS2TIME_SCALE(pts_duration:%llu, m_u64VideoPTS:%llu, VIDEO_TIME_SCALE):%llu\n",
+                printf("m_bFirstAudio:%d PTS2TIME_SCALE(pts_duration:%llu, m_u64VideoPTS:%lu, VIDEO_TIME_SCALE):%lu\n",
                        mp4v2_write->m_bFirstAudio,pts_duration,mp4v2_write->m_u64VideoPTS,
                        PTS2TIME_SCALE(pts_duration, mp4v2_write->m_u64VideoPTS, VIDEO_TIME_SCALE));
             }
@@ -479,9 +479,9 @@ int Mp4AEncode(UBYTE* _aacData,int _aacSize,pMp4v2WriteMp4 mp4v2_write)
     if(_aacSize > 0)
     {
         ret = MP4WriteSample(mp4v2_write->m_mp4FHandle,mp4v2_write->m_aTrackId,
-                             (UBYTE*)&(_aacData[7]), _aacSize - 7 , 1012, 0, true);
+                             (UBYTE*)&(_aacData[7]), _aacSize - 7 , 1024, 0, true);
         time(&mp4v2_write->t_end);
-        mp4v2_write->tick_count += 2024;
+        mp4v2_write->tick_count += 2048;
         if(mp4v2_write->t_end - mp4v2_write->t_start >= 30)
         {
             mp4v2_write->t_start = mp4v2_write->t_end;
@@ -525,7 +525,7 @@ void InitMp4Reader(pMp4v2ReadMp4 mp4v2_read)
     mp4v2_read->p_audio_sample = NULL;
 }
 
-bool OpenMp4Reader(const char * fileName,pMp4v2ReadMp4 mp4v2_read)
+bool OpenMp4Reader(const char *fileName,pMp4v2ReadMp4 mp4v2_read)
 {
     int	i;
     int	b;
@@ -591,7 +591,6 @@ bool OpenMp4Reader(const char * fileName,pMp4v2ReadMp4 mp4v2_read)
     else
     {
         audio_name = (char *)MP4GetTrackMediaDataName(mp4v2_read->m_mp4FHandle,mp4v2_read->audio_trId);
-
         if (strcmp(audio_name, "mp4a") == 0)
         {
             printf("Audio = MPEG4 AAC\n");
@@ -605,41 +604,43 @@ bool OpenMp4Reader(const char * fileName,pMp4v2ReadMp4 mp4v2_read)
     /* 3. Video Properties.  */
     if (mp4v2_read->video_trId != MP4_INVALID_TRACK_ID)
     {
-
+        mp4v2_read->video_num_samples = MP4GetTrackNumberOfSamples(mp4v2_read->m_mp4FHandle, mp4v2_read->video_trId);
         mp4v2_read->m_vWidth = MP4GetTrackVideoWidth(mp4v2_read->m_mp4FHandle,mp4v2_read->video_trId);
         mp4v2_read->m_vHeight = MP4GetTrackVideoHeight(mp4v2_read->m_mp4FHandle,mp4v2_read->video_trId);
-        mp4v2_read->video_num_samples = MP4GetTrackNumberOfSamples(mp4v2_read->m_mp4FHandle, mp4v2_read->video_trId);
+        video_frame_rate = MP4GetTrackVideoFrameRate(mp4v2_read->m_mp4FHandle,mp4v2_read->video_trId);
+
         mp4v2_read->video_timescale = MP4GetTrackTimeScale(mp4v2_read->m_mp4FHandle, mp4v2_read->video_trId);
         mp4v2_read->video_duration = MP4GetTrackDuration(mp4v2_read->m_mp4FHandle,mp4v2_read->video_trId);
 
-        video_frame_rate = MP4GetTrackVideoFrameRate(mp4v2_read->m_mp4FHandle,mp4v2_read->video_trId);
         mp4v2_read->video_sample_max_size = MP4GetTrackMaxSampleSize(mp4v2_read->m_mp4FHandle,mp4v2_read->video_trId);
-        mp4v2_read->p_video_sample = (u_int8_t *) malloc(mp4v2_read->video_sample_max_size);
 
+        mp4v2_read->p_video_sample = (u_int8_t *)malloc(mp4v2_read->video_sample_max_size);
         if(mp4v2_read->p_video_sample == NULL)
         {
             return FALSE;
         }
 
         mp4v2_read->n_video_sample = mp4v2_read->video_sample_max_size;
-
         mp4v2_read->m_vFrateR = (int)video_frame_rate;
 
 //        printf("width:%d, height:%d, frameRate:%d,video_timescale:%d,"
-//               " video_duration:%d video_num_samples:%d\n", m_vWidth, m_vHeight,
-//               m_vFrateR, video_timescale, video_duration, video_num_samples);
+//               " video_duration:%d video_num_samples:%d\n",mp4v2_read->m_vWidth,mp4v2_read->m_vHeight,
+//               mp4v2_read->m_vFrateR, mp4v2_read->video_timescale, mp4v2_read->video_duration, mp4v2_read->video_num_samples);
     }
 
     /* 4. Audio Properties.  */
     if (mp4v2_read->audio_trId != MP4_INVALID_TRACK_ID)
     {
-        mp4v2_read->audio_duration = MP4GetTrackDuration(mp4v2_read->m_mp4FHandle,mp4v2_read->audio_trId);
-        mp4v2_read->audio_timescale = MP4GetTrackTimeScale(mp4v2_read->m_mp4FHandle,mp4v2_read->audio_trId);
         mp4v2_read->audio_num_samples = MP4GetTrackNumberOfSamples(mp4v2_read->m_mp4FHandle,mp4v2_read->audio_trId);
         mp4v2_read->audio_num_channels = MP4GetTrackAudioChannels(mp4v2_read->m_mp4FHandle, mp4v2_read->audio_trId);
-        mp4v2_read->audio_sample_max_size = MP4GetTrackMaxSampleSize(mp4v2_read->m_mp4FHandle, mp4v2_read->audio_trId);
-        mp4v2_read->p_audio_sample = (u_int8_t *) malloc(mp4v2_read->audio_sample_max_size);
 
+        mp4v2_read->audio_timescale = MP4GetTrackTimeScale(mp4v2_read->m_mp4FHandle,mp4v2_read->audio_trId);
+        mp4v2_read->audio_duration = MP4GetTrackDuration(mp4v2_read->m_mp4FHandle,mp4v2_read->audio_trId);
+
+        mp4v2_read->audio_sample_max_size = MP4GetTrackMaxSampleSize(mp4v2_read->m_mp4FHandle, mp4v2_read->audio_trId);
+
+        printf("mp4v2_read->audio_sample_max_size %d\n",mp4v2_read->audio_sample_max_size);
+        mp4v2_read->p_audio_sample = (u_int8_t *)malloc(mp4v2_read->audio_sample_max_size);
         if(mp4v2_read->p_audio_sample == NULL)
         {
             return FALSE;
@@ -673,7 +674,10 @@ bool OpenMp4Reader(const char * fileName,pMp4v2ReadMp4 mp4v2_read)
 
             b = MP4GetTrackH264SeqPictHeaders(mp4v2_read->m_mp4FHandle, mp4v2_read->video_trId,
                                               &pp_sps, &pn_sps, &pp_pps, &pn_pps);
-            if(!b) return FALSE;
+            if(!b)
+            {
+                return FALSE;
+            }
 
             mp4v2_read->sps_num = *pn_sps;
             mp4v2_read->pps_num = *pn_pps;
@@ -696,7 +700,7 @@ bool OpenMp4Reader(const char * fileName,pMp4v2ReadMp4 mp4v2_read)
             {
                 for (i=0; pn_sps[i] != 0; i++)
                 {
-                    memcpy(mp4v2_read->sps + 4, pp_sps[i], *(pn_sps + i));
+                    memcpy(mp4v2_read->sps + 4,pp_sps[i], *(pn_sps + i));
                     free((pp_sps[i]));
                 }
                 free(pp_sps);
@@ -707,7 +711,7 @@ bool OpenMp4Reader(const char * fileName,pMp4v2ReadMp4 mp4v2_read)
             {
                 for (i=0; *(pp_pps + i); i++)
                 {
-                    memcpy(mp4v2_read->pps + 4, *(pp_pps + i), *(pn_pps + i));
+                    memcpy(mp4v2_read->pps + 4,*(pp_pps + i),*(pn_pps + i));
                     free(*(pp_pps + i));
                 }
                 free(pp_pps);
@@ -725,7 +729,7 @@ bool OpenMp4Reader(const char * fileName,pMp4v2ReadMp4 mp4v2_read)
     {
         if (strcmp(audio_name, "mp4a") == 0)
         {
-            p_audio_config      = NULL;
+            p_audio_config = NULL;
             n_audio_config_size = 0;
 
             b = MP4GetTrackESConfiguration(mp4v2_read->m_mp4FHandle, mp4v2_read->audio_trId,
@@ -762,65 +766,50 @@ bool OpenMp4Reader(const char * fileName,pMp4v2ReadMp4 mp4v2_read)
     return TRUE;
 }
 
-bool Mp4ReadVideo(char *p_video, int *frameLen,MP4Timestamp *time_stamp,pMp4v2ReadMp4 mp4v2_read)
+bool Mp4ReadVideo(char *p_video, int *frameLen,int *KeyFrame,MP4Timestamp *time_stamp,pMp4v2ReadMp4 mp4v2_read)
 {
     bool b = FALSE;
     int count = 0;
 
     *frameLen = 0;
+    *KeyFrame = 0;
     mp4v2_read->n_video_sample = mp4v2_read->video_sample_max_size;
 
     /*  6. Read Video Samples.  */
-    if (mp4v2_read->video_trId != MP4_INVALID_TRACK_ID)
+    if((mp4v2_read->video_trId != MP4_INVALID_TRACK_ID)
+            && (mp4v2_read->sampleId_v < mp4v2_read->video_num_samples))
     {
-        if(mp4v2_read->sampleId_v < mp4v2_read->video_num_samples)
-        {	
-            do
-            {
-                b = MP4ReadSample(mp4v2_read->m_mp4FHandle,mp4v2_read->video_trId,
-                                  mp4v2_read->sampleId_v,&mp4v2_read->p_video_sample,
-                                  &mp4v2_read->n_video_sample,time_stamp, NULL, NULL, NULL);
-
-                mp4v2_read->sampleId_v++;
-                if (!b || mp4v2_read->n_video_sample == 0)
-                {
-                    break;
-                }
-
-                /* I frame found */
-                if((mp4v2_read->p_video_sample[4] & 0X1F) == 0x05)
-                {
-                    break;
-                }
-            }while(0);
-
-            if (!b || mp4v2_read->n_video_sample == 0 )
-            {
-                printf("%d ERROR [%d] \n",__LINE__,mp4v2_read->sampleId_v);
-                return FALSE;
-            }
-
-            *time_stamp =  MP4GetSampleTime(mp4v2_read->m_mp4FHandle,
-                                            mp4v2_read->video_trId,mp4v2_read->sampleId_v);
-
-            if((mp4v2_read->p_video_sample[4]&0X1F) == 0x05)  // I frame
-            {
-                memcpy(p_video, mp4v2_read->sps, mp4v2_read->sps_num + 4);
-                count += (mp4v2_read->sps_num + 4);
-
-                memcpy(p_video + count, mp4v2_read->pps, mp4v2_read->pps_num + 4);
-                count += (mp4v2_read->pps_num + 4);
-            }
-
-            memcpy(p_video + count, start_code, 4);
-            count += 4;
-
-            memcpy(p_video + count, mp4v2_read->p_video_sample + 4, mp4v2_read->n_video_sample - 4);
-            count += (mp4v2_read->n_video_sample - 4);
-            *frameLen = count;
-
-            return TRUE;
+        b = MP4ReadSample(mp4v2_read->m_mp4FHandle,mp4v2_read->video_trId,
+                          mp4v2_read->sampleId_v,&mp4v2_read->p_video_sample,
+                          &mp4v2_read->n_video_sample,time_stamp, NULL, NULL, NULL);
+        mp4v2_read->sampleId_v++;
+        if ((!b) || (mp4v2_read->n_video_sample == 0))
+        {
+            printf("%d ERROR [%d] \n",__LINE__,mp4v2_read->sampleId_v);
+            return FALSE;
         }
+
+        if((mp4v2_read->p_video_sample[4]&0X1F) == 0x05)  // I frame
+        {
+            memcpy(p_video, mp4v2_read->sps, mp4v2_read->sps_num + 4);
+            count += (mp4v2_read->sps_num + 4);
+
+            memcpy(p_video + count, mp4v2_read->pps, mp4v2_read->pps_num + 4);
+            count += (mp4v2_read->pps_num + 4);
+
+            *KeyFrame = 1;
+        }
+
+        memcpy(p_video + count,start_code,4);
+        count += 4;
+
+        memcpy(p_video + count, mp4v2_read->p_video_sample + 4, mp4v2_read->n_video_sample - 4);
+        count += (mp4v2_read->n_video_sample - 4);
+        *frameLen = count;
+        *time_stamp = MP4GetSampleTime(mp4v2_read->m_mp4FHandle,mp4v2_read->video_trId,
+                                       mp4v2_read->sampleId_v);
+
+        return TRUE;
     }
 
     return FALSE;
@@ -832,28 +821,27 @@ bool Mp4ReadAudio(char *p_audio, int *frameLen, MP4Timestamp *time_stamp,pMp4v2R
     *frameLen = 0;
     mp4v2_read->n_audio_sample = mp4v2_read->audio_sample_max_size;
 
-    if (mp4v2_read->audio_trId != MP4_INVALID_TRACK_ID
+    if ((mp4v2_read->audio_trId != MP4_INVALID_TRACK_ID)
             && (mp4v2_read->sampleId_a < mp4v2_read->audio_num_samples))
     {
-
         b = MP4ReadSample(mp4v2_read->m_mp4FHandle, mp4v2_read->audio_trId, mp4v2_read->sampleId_a,
                           &mp4v2_read->p_audio_sample, &mp4v2_read->n_audio_sample,
                           time_stamp, NULL, NULL, NULL);
-
-        *time_stamp =  MP4GetSampleTime(mp4v2_read->m_mp4FHandle, mp4v2_read->audio_trId, mp4v2_read->sampleId_a);
         mp4v2_read->sampleId_a++;
-
-        if (!b)
+        if ((!b) || (mp4v2_read->n_audio_sample == 0))
         {
-            printf("%d ERROR [%d] \n",__LINE__,mp4v2_read->sampleId_v);
+            printf("%d ERROR [%d] \n",__LINE__,mp4v2_read->sampleId_a);
             return FALSE;
         }
 
-        memcpy(p_audio, mp4v2_read->p_audio_sample,mp4v2_read->n_audio_sample);
+        memcpy(p_audio,mp4v2_read->p_audio_sample,mp4v2_read->n_audio_sample);
         *frameLen = mp4v2_read->n_audio_sample;
+        *time_stamp = MP4GetSampleTime(mp4v2_read->m_mp4FHandle, mp4v2_read->audio_trId,
+                                       mp4v2_read->sampleId_a);
 
         return TRUE;
     }
+
     return FALSE;
 }
 
@@ -890,19 +878,21 @@ bool CloseMp4Reader(pMp4v2ReadMp4 mp4v2_read)
 
 void read_mp4_to_buff(void)
 {
+    unsigned char v_buff[400 * 1024] = {0};
+    unsigned char a_buff[50 * 1024] = {0};
 
-    char v_buff[1000 * 1024] = {0};
-    char a_buff[500 * 1024] = {0};
+    bool v_ret;
+    bool a_ret;
 
     int v_len;
     int a_len;
-    bool v_ret;
-    bool a_ret;
+    int key_frame = 0;
 
     MP4Timestamp v_time;
     MP4Timestamp a_time;
 
-    Mp4v2ReadMp4 mp4_read;
+    Mp4v2WriteMp4 mp4_write;
+    Mp4v2ReadMp4  mp4_read;
 
     FILE *fp_v = NULL;
     FILE *fp_a = NULL;
@@ -923,13 +913,22 @@ void read_mp4_to_buff(void)
 
     OpenMp4Reader("./test.mp4",&mp4_read);
 
+    InitMp4Encoder(1280,720,mp4_read.m_vFrateR,&mp4_write);
+
+    Mp4SetProp(1280,720,mp4_read.m_vFrateR,8000,1,16,&mp4_write);
+
+    OpenMp4Encoder("./mp4v2.mp4",&mp4_write);
+
     while(1)
     {
         memset(v_buff,0,sizeof(v_buff));
-        v_ret = Mp4ReadVideo(v_buff,&v_len,&v_time,&mp4_read);
+        v_ret = Mp4ReadVideo(v_buff,&v_len,&key_frame,&v_time,&mp4_read);
         if(v_ret)
         {
             fwrite(v_buff, 1, v_len, fp_v);
+//            printf("v_len %d\n",v_len);
+//            printf("v_time %llu\n",v_time);
+            Mp4VEncode(v_buff,v_len,key_frame,v_time * 10,&mp4_write);
         }
 
         memset(a_buff,0,sizeof(a_buff));
@@ -937,6 +936,9 @@ void read_mp4_to_buff(void)
         if(a_ret)
         {
             fwrite(a_buff, 1, a_len, fp_a);
+            printf("a_len %d\n",a_len);
+//            printf("a_time %llu\n",a_time);
+            Mp4AEncode(a_buff,a_len,&mp4_write);
         }
 
         if((a_ret == false) && (v_ret == false))
@@ -944,12 +946,12 @@ void read_mp4_to_buff(void)
             printf("end of read mp4\n");
             break;
         }
-
     }
 
     fclose(fp_v);
     fclose(fp_a);
     CloseMp4Reader(&mp4_read);
+    CloseMp4Encoder(&mp4_write);
 }
 
 int main()

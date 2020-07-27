@@ -120,7 +120,7 @@ void CloseMp4Encoder(pMp4v2WriteMp4 mp4v2_write);
 
 /* read mp4 file */
 bool OpenMp4Reader(const char *fileName,pMp4v2ReadMp4 mp4v2_read);
-bool Mp4ReadVideo(char *p_video,int *frameLen,MP4Timestamp *time_stamp,pMp4v2ReadMp4 mp4v2_read);
+bool Mp4ReadVideo(char *p_video,int *frameLen,int *KeyFrame,MP4Timestamp *time_stamp,pMp4v2ReadMp4 mp4v2_read);
 bool Mp4ReadAudio(char *p_audio,int *frameLen,MP4Timestamp *time_stamp,pMp4v2ReadMp4 mp4v2_read);
 bool Mp4SeekMedia(int total_second,int ops_second,pMp4v2ReadMp4 mp4v2_read);
 bool CloseMp4Reader(pMp4v2ReadMp4 mp4v2_read);
