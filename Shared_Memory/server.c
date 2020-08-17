@@ -1,27 +1,24 @@
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <unistd.h>
 #include "comm.h"
 
 int main()
 {
-    int shmid = CreateShm(PATHNAME,256);
+    int shmid = CreateShm(SHARED_MEMORY_NAME,MAX_DATA_BUFFER);
 
-    unsigned char *addr = shmat(shmid,NULL,0);
-    sleep(2);
+    unsigned char *data = shmat(shmid,NULL,0);
 
-    int i = 0;
+    sleep(1);
+
     while(1)
     {
-        printf("client# %d\n",*addr);
-        if(*addr != 0)
+        if(*data != 0)
         {
-            *addr = 0;
+            printf("data %d\n",*data);
         }
+
         sleep(1);
     }
 
-    shmdt(addr);
+    shmdt(data);
     sleep(2);
     DestroyShm(shmid);
 

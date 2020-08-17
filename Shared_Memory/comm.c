@@ -2,7 +2,7 @@
 
 static int CommShm(char *path,int size,int flags)
 {
-    key_t key = ftok(path,PROJ_ID);
+    key_t key = ftok(path,SHARED_MEMORY_ID);
     if(key < 0)
     {
         perror("ftok");
