@@ -1,0 +1,3 @@
+sound_conv.o: sound_conv.c /usr/include/stdc-predef.h
+
+/usr/include/stdc-predef.h:
