@@ -1,9 +1,0 @@
-sudo apt-get install vim-gtk
-
-vi ~/.vimrc
-set mouse=a
-
-/* solve bug */
-cd ~/.vim
-vi plugged/echodoc.vim/autoload/echodoc.vim +133
-

@@ -1,0 +1,407 @@
+vauth/libcurl_la-digest.lo: vauth/digest.c ../lib/curl_setup.h \
+ ../lib/curl_config.h ../include/curl/curl.h ../include/curl/curlver.h \
+ ../include/curl/system.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/sys/types.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/features.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_config.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/sys/cdefs.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/types.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/wordsize.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/lib/gcc/arm-anykav200-linux-uclibcgnueabi/4.8.5/include/stddef.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/typesizes.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/pthreadtypes.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/endian.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/endian.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/byteswap.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/byteswap.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/byteswap-common.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/time.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/sys/select.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/select.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/sigset.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/time.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/sys/sysmacros.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/sys/socket.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/sys/uio.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/uio.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/socket.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/lib/gcc/arm-anykav200-linux-uclibcgnueabi/4.8.5/include-fixed/limits.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/lib/gcc/arm-anykav200-linux-uclibcgnueabi/4.8.5/include-fixed/syslimits.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/limits.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/posix1_lim.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/local_lim.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/linux/limits.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_local_lim.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/posix2_lim.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/socket_type.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/sockaddr.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/asm/socket.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/asm/sockios.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/stdio.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_stdio.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/wchar.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/wchar.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_mutex.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/pthread.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/sched.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/sched.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_clk_tck.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/signal.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/setjmp.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_pthread.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/lib/gcc/arm-anykav200-linux-uclibcgnueabi/4.8.5/include/stdarg.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/stdio_lim.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/sys/time.h \
+ ../include/curl/easy.h ../include/curl/multi.h ../include/curl/curl.h \
+ ../include/curl/urlapi.h ../include/curl/options.h \
+ ../include/curl/typecheck-gcc.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/assert.h \
+ ../lib/curl_setup_once.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/stdlib.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/alloca.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/string.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/ctype.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_touplow.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/errno.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/errno.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/linux/errno.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/asm/errno.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/asm-generic/errno.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/asm-generic/errno-base.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/sys/stat.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/stat.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/lib/gcc/arm-anykav200-linux-uclibcgnueabi/4.8.5/include/stdbool.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/unistd.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/posix_opt.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/confname.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/getopt.h \
+ ../lib/curl_ctype.h ../lib/curl_setup.h ../lib/vauth/vauth.h \
+ ../lib/vauth/digest.h ../lib/urldata.h ../lib/cookie.h ../lib/psl.h \
+ ../lib/formdata.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/netinet/in.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/lib/gcc/arm-anykav200-linux-uclibcgnueabi/4.8.5/include/stdint.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/stdint.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/in.h \
+ ../lib/timeval.h ../lib/http_chunks.h ../lib/hostip.h ../lib/hash.h \
+ ../lib/llist.h ../lib/curl_addrinfo.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/netdb.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/rpc/netdb.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/netdb.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/arpa/inet.h \
+ ../lib/asyn.h \
+ /media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/setjmp.h \
+ ../lib/splay.h ../lib/dynbuf.h ../lib/mime.h ../lib/imap.h \
+ ../lib/pingpong.h ../lib/curl_sasl.h ../lib/pop3.h ../lib/smtp.h \
+ ../lib/ftp.h ../lib/file.h ../lib/vssh/ssh.h ../lib/http.h ../lib/rtsp.h \
+ ../lib/smb.h ../lib/mqtt.h ../lib/wildcard.h ../lib/multihandle.h \
+ ../lib/conncache.h ../lib/socketpair.h ../lib/quic.h \
+ ../lib/curl_base64.h ../lib/curl_hmac.h ../lib/curl_md5.h \
+ ../lib/curl_hmac.h ../lib/curl_sha256.h ../lib/vtls/vtls.h \
+ ../lib/vtls/openssl.h ../lib/vtls/gtls.h ../lib/vtls/nssg.h \
+ ../lib/vtls/gskit.h ../lib/vtls/wolfssl.h ../lib/vtls/schannel.h \
+ ../lib/vtls/sectransp.h ../lib/vtls/mbedtls.h ../lib/vtls/mesalink.h \
+ ../lib/vtls/bearssl.h ../lib/warnless.h ../lib/strtok.h ../lib/strcase.h \
+ ../lib/non-ascii.h ../lib/curl_printf.h ../include/curl/mprintf.h \
+ ../lib/rand.h ../lib/curl_memory.h ../lib/memdebug.h
+
+../lib/curl_setup.h:
+
+../lib/curl_config.h:
+
+../include/curl/curl.h:
+
+../include/curl/curlver.h:
+
+../include/curl/system.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/sys/types.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/features.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_config.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/sys/cdefs.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/types.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/wordsize.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/lib/gcc/arm-anykav200-linux-uclibcgnueabi/4.8.5/include/stddef.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/typesizes.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/pthreadtypes.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/endian.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/endian.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/byteswap.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/byteswap.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/byteswap-common.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/time.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/sys/select.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/select.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/sigset.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/time.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/sys/sysmacros.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/sys/socket.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/sys/uio.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/uio.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/socket.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/lib/gcc/arm-anykav200-linux-uclibcgnueabi/4.8.5/include-fixed/limits.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/lib/gcc/arm-anykav200-linux-uclibcgnueabi/4.8.5/include-fixed/syslimits.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/limits.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/posix1_lim.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/local_lim.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/linux/limits.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_local_lim.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/posix2_lim.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/socket_type.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/sockaddr.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/asm/socket.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/asm/sockios.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/stdio.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_stdio.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/wchar.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/wchar.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_mutex.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/pthread.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/sched.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/sched.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_clk_tck.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/signal.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/setjmp.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_pthread.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/lib/gcc/arm-anykav200-linux-uclibcgnueabi/4.8.5/include/stdarg.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/stdio_lim.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/sys/time.h:
+
+../include/curl/easy.h:
+
+../include/curl/multi.h:
+
+../include/curl/curl.h:
+
+../include/curl/urlapi.h:
+
+../include/curl/options.h:
+
+../include/curl/typecheck-gcc.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/assert.h:
+
+../lib/curl_setup_once.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/stdlib.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/alloca.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/string.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/ctype.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_touplow.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/errno.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/errno.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/linux/errno.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/asm/errno.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/asm-generic/errno.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/asm-generic/errno-base.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/sys/stat.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/stat.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/lib/gcc/arm-anykav200-linux-uclibcgnueabi/4.8.5/include/stdbool.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/unistd.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/posix_opt.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/confname.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/getopt.h:
+
+../lib/curl_ctype.h:
+
+../lib/curl_setup.h:
+
+../lib/vauth/vauth.h:
+
+../lib/vauth/digest.h:
+
+../lib/urldata.h:
+
+../lib/cookie.h:
+
+../lib/psl.h:
+
+../lib/formdata.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/netinet/in.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/lib/gcc/arm-anykav200-linux-uclibcgnueabi/4.8.5/include/stdint.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/stdint.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/in.h:
+
+../lib/timeval.h:
+
+../lib/http_chunks.h:
+
+../lib/hostip.h:
+
+../lib/hash.h:
+
+../lib/llist.h:
+
+../lib/curl_addrinfo.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/netdb.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/rpc/netdb.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/bits/netdb.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/arpa/inet.h:
+
+../lib/asyn.h:
+
+/media/wm/ubuntu/arm-anykav200-crosstool/usr/arm-anykav200-linux-uclibcgnueabi/sysroot/usr/include/setjmp.h:
+
+../lib/splay.h:
+
+../lib/dynbuf.h:
+
+../lib/mime.h:
+
+../lib/imap.h:
+
+../lib/pingpong.h:
+
+../lib/curl_sasl.h:
+
+../lib/pop3.h:
+
+../lib/smtp.h:
+
+../lib/ftp.h:
+
+../lib/file.h:
+
+../lib/vssh/ssh.h:
+
+../lib/http.h:
+
+../lib/rtsp.h:
+
+../lib/smb.h:
+
+../lib/mqtt.h:
+
+../lib/wildcard.h:
+
+../lib/multihandle.h:
+
+../lib/conncache.h:
+
+../lib/socketpair.h:
+
+../lib/quic.h:
+
+../lib/curl_base64.h:
+
+../lib/curl_hmac.h:
+
+../lib/curl_md5.h:
+
+../lib/curl_hmac.h:
+
+../lib/curl_sha256.h:
+
+../lib/vtls/vtls.h:
+
+../lib/vtls/openssl.h:
+
+../lib/vtls/gtls.h:
+
+../lib/vtls/nssg.h:
+
+../lib/vtls/gskit.h:
+
+../lib/vtls/wolfssl.h:
+
+../lib/vtls/schannel.h:
+
+../lib/vtls/sectransp.h:
+
+../lib/vtls/mbedtls.h:
+
+../lib/vtls/mesalink.h:
+
+../lib/vtls/bearssl.h:
+
+../lib/warnless.h:
+
+../lib/strtok.h:
+
+../lib/strcase.h:
+
+../lib/non-ascii.h:
+
+../lib/curl_printf.h:
+
+../include/curl/mprintf.h:
+
+../lib/rand.h:
+
+../lib/curl_memory.h:
+
+../lib/memdebug.h:
