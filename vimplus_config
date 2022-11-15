@@ -1,9 +1,14 @@
 sudo apt-get install vim-gtk
 
+git clone https://github.com/chxuan/vimplus.git ~/.vimplus
+cd ~/.vimplus
+./install.sh //不加sudo
+
 vi ~/.vimrc
 set mouse=a
 
 /* solve bug */
-cd ~/.vim
-vi plugged/echodoc.vim/autoload/echodoc.vim +133
+vi ~/.vim/plugged/echodoc.vim/autoload/echodoc.vim +133
 
+cd ~/.vim/plugged/YouCompleteMe 
+./install.py

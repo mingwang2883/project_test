@@ -1,22 +1,27 @@
 #include "push_message.h"
 
-char gUID[24] = "1234567890";
+char gUID[24] = "V5K26HJP1GKVHEE9111A";
 char push_server_path[64] = {0};
 unsigned char feed_list[84] = {0};
 
-int vender_type = 0;
+int vender_type = 6;
 struct sockaddr_in gPushMsgSrvAddr;
 
 char *GetPushMessageString(char *UID,unsigned char *list)
 {
     static char msgBuf[2048];
 
-    sprintf(msgBuf, "GET /%s/server.php?cmd=raisealarm&devid=%s&feedlist=%s\r\nHTTP/1.1\r\n"
-            "Host: %s\r\n"
-            "Connection: keep-alive\r\n"
-            "User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.52 Safari/536.5\r\n"
-            "\r\n", push_server_path, UID,list,inet_ntoa(gPushMsgSrvAddr.sin_addr));
-
+    sprintf(msgBuf, "GET /%s/server.php?cmd=raisealarm&devid=%s&eventtype=66&eventtime=1658892659&eventpicn= &sn=\r\nHTTP/1.1\r\n"
+                    "Host: %s\r\n"
+                    "Connection: keep-alive\r\n"
+                    "User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.52 Safari/536.5\r\n"
+                    "Accept: */*\r\n"
+                    "Accept-Encoding: gzip,deflate,sdch\r\n"
+                    "Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4\r\n"
+                    "Accept-Charset: Big5,utf-8;q=0.7,*;q=0.3\r\n"
+                    "Pragma: no-cache\r\n"
+                    "Cache-Control: no-cache\r\n"
+                    "\r\n",push_server_path,UID,inet_ntoa(gPushMsgSrvAddr.sin_addr));
     return msgBuf;
 }
 
@@ -58,8 +63,9 @@ int SendPushMessage(unsigned char *list)
                 time_out = 6000; // 2秒
 
                 setsockopt(skt, SOL_SOCKET,SO_RCVTIMEO, (char *)&time_out,sizeof(time_out));
-                recv(skt, buf, 1024, 0);
-                printf("revice buf:%s\n", buf);
+                ret = recv(skt, buf, 1024, 0);
+                printf("ret: %d,revice buf:%s\n",ret,buf);
+                sleep(1);
 
                 ret = 1;
             }
@@ -74,7 +80,7 @@ int SendPushMessage(unsigned char *list)
             printf("connect tcp error server_addr:%s\n",inet_ntoa(gPushMsgSrvAddr.sin_addr));
         }
 
-        sleep(10);
+        //sleep(10);
         close(skt);
     }
 
@@ -96,10 +102,16 @@ char *GetRegMessageString(char *UID)
     else
     {
         sprintf(msgBuf, "GET /apns/apns.php?cmd=reg_server&uid=%s\r\nHTTP/1.1\r\n"
-                "Host: %s\r\n"
-                "Connection: keep-alive\r\n"
-                "User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.52 Safari/536.5\r\n"
-                "\r\n", UID, inet_ntoa(gPushMsgSrvAddr.sin_addr));
+                        "Host: %s\r\n"
+                        "Connection: keep-alive\r\n"
+                        "User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.52 Safari/536.5\r\n"
+                        "Accept: */*\r\n"
+                        "Accept-Encoding: gzip,deflate,sdch\r\n"
+                        "Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4\r\n"
+                        "Accept-Charset: Big5,utf-8;q=0.7,*;q=0.3\r\n"
+                        "Pragma: no-cache\r\n"
+                        "Cache-Control: no-cache\r\n"
+                        "\r\n", UID, inet_ntoa(gPushMsgSrvAddr.sin_addr));
     }
 
     printf("msgBuf:%s\n", msgBuf);
@@ -118,9 +130,9 @@ int SendRegister()
 
     info.ip_port = 8088;
 
-    memcpy(server_addr,"120.24.215.192", sizeof(server_addr));
+    memcpy(server_addr,"47.254.44.196", sizeof(server_addr));
     memset(push_server_path, 0, sizeof(push_server_path));
-    memcpy(push_server_path, "Test", sizeof(push_server_path));
+    memcpy(push_server_path, "WoPet_Server", sizeof(push_server_path));
     port_remote = info.ip_port;
 
     host = gethostbyname((char*)server_addr);
