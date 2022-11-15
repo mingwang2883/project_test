@@ -12,6 +12,7 @@ ifneq ($(MP4BOX_STATIC),yes)
 	$(MAKE) -C modules all
 endif
 
+DEBUGBUILD="yes"
 GITREV_PATH:=$(SRC_PATH)/include/gpac/revision.h
 TAG:=$(shell git --git-dir=$(SRC_PATH)/.git describe --tags --abbrev=0 2> /dev/null)
 VERSION:=$(shell echo `git --git-dir=$(SRC_PATH)/.git describe --tags --long  || echo "UNKNOWN"` | sed "s/^$(TAG)-//")
